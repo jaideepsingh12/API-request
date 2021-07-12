@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import UserList from "./UserList";
 
 function App() {
+  const [page, setPage] = useState(0);
+  const [title, setTitle] = useState("favourite");
+  console.log(page);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button
+        className="px-5 py-2 bg-red-400"
+        onClick={() => setPage(page + 1)}
+      >
+        next
+      </button>
+      <button
+        className="px-5 py-2 ml-4 bg-red-400"
+        onClick={() => setTitle("Not favourite")}
+      >
+        title switch
+      </button>
+      <UserList title={title} page={page}></UserList>
+    </>
   );
 }
 
